@@ -2,9 +2,10 @@
 #include <time.h>
 #include <stdbool.h>
 #include <stdlib.h>
+#include <unistd.h>
 
-#define X 10
-#define Y 10
+#define X 50
+#define Y 100
 
 int matrix[X][Y] = {0};
 
@@ -27,12 +28,15 @@ void prin(int matrix[X][Y]){
     for(size_t i = 0; i < X; ++i){
         
         for(size_t j = 0; j < Y; ++j){
-            printf("%d ", matrix[i][j]);
+            // printf("%d ", matrix[i][j]);
+            if(matrix[i][j] == 1) printf("*");
+            if(matrix[i][j] == 0) printf(" ");
+            
         }
     
         printf("\n");
     } 
-    printf("\n\n\n\n");
+    // printf("\n\n\n\n");
 
 }
 
@@ -158,11 +162,14 @@ void incrementStateOptimized(){
 void play(){
 
     setRandomMatrix();
-    int t = 2;
-    while(t--){
-        incrementStateOptimized();
+    int t = 100;
+//    while(t--){
+    while(1){
         prin(matrix);
-        
+        incrementStateOptimized();
+       
+        // sleep(1); // uses sec 
+        usleep(500000); // 1000000 micro sec -> 1s
     }
 
 
@@ -171,11 +178,11 @@ void play(){
 
 int main(void){
    
-    setRandomMatrix();
-    int c;  
-    c = countNeighborsOpt(2, 4);
-    printf("%d\n", c);
-    prin(matrix);
+    // setRandomMatrix();
+    // int c;  
+    // c = countNeighborsOpt(2, 4);
+    // printf("%d\n", c);
+    // prin(matrix);
     play();
 
     
