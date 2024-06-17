@@ -1,8 +1,26 @@
 #include <stdio.h>
+#include <time.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
-#define X 50
-#define Y 50
+#define X 10
+#define Y 10
+
+int matrix[X][Y] = {0};
+
+void setRandomMatrix(){
+   
+    srand(time(NULL));
+    for(size_t i = 0; i < X; ++i){
+        for(size_t j = 0; j < Y; ++j){
+            int randbit = rand() % 2; 
+            
+            matrix[i][j] = randbit;
+        }
+    }
+
+}
+
 
 
 void prin(int matrix[X][Y]){
@@ -14,17 +32,12 @@ void prin(int matrix[X][Y]){
     
         printf("\n");
     } 
+    printf("\n\n\n\n");
 
 }
 
 
 
-// int matrix[X][Y];
-
-int matrix[4][8] = {{ 1, 1, 0, 1, 0, 0, 0, 0}, 
-                    { 1, 0, 0, 0, 0, 1, 1, 1}, 
-                    { 0, 1, 1, 0, 1, 0, 0, 0}, 
-                    { 1, 0, 1, 0, 0, 1, 0, 1}};
 
 
 
@@ -84,16 +97,17 @@ void incrimentState(){
 int countNeighborsOpt(int x, int y){
     int count = 0;
 
-    for(size_t i = 0; i < X; ++i){
-        for(size_t j = 0; j < Y; ++j){
+    for(size_t i = x - 1; i < x + 2; ++i){
+        for(size_t j = y - 1; j < y + 2; ++j){
             if((i == x && j == y) || i < 0 || j < 0 || i == X || j == Y){
                 continue;
             }
-            if( matrix[i][j] == 2 || matrix[i][j] == 3){
+            if( matrix[i][j] == 1 || matrix[i][j] == 3){
                 count++;
             }
         }
     } 
+    return count;
 }
 
 
@@ -142,9 +156,13 @@ void incrementStateOptimized(){
 
 
 void play(){
-    while(1){
-        incrimentState();
+
+    setRandomMatrix();
+    int t = 2;
+    while(t--){
+        incrementStateOptimized();
         prin(matrix);
+        
     }
 
 
@@ -152,10 +170,16 @@ void play(){
 
 
 int main(void){
-    
+   
+    setRandomMatrix();
     int c;  
     c = countNeighborsOpt(2, 4);
-    printf("%d ", c);
+    printf("%d\n", c);
+    prin(matrix);
+    play();
+
+    
+
 
 
     return 0;
