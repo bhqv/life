@@ -2,5 +2,5 @@
 
 ### To Do
 
-- [] ascii rendering
-- [] write a blog about it
+- [ ] ascii rendering
+- [ ] write a blog about it
