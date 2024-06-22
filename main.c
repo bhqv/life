@@ -98,6 +98,7 @@ void incrimentState(){
 */
 
 
+
 int countNeighborsOpt(int x, int y){
     int count = 0;
 
@@ -169,7 +170,7 @@ void play(){
         incrementStateOptimized();
        
         // sleep(1); // uses sec 
-        usleep(500000); // 1000000 micro sec -> 1s
+        usleep(200000); // 1000000 micro sec -> 1s
     }
 
 
