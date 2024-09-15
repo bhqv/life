@@ -2,5 +2,6 @@
 
 ### To Do
 
-- [ ] ascii rendering
-- [ ] write a blog about it
+- [ ] proper ascii rendering
+- [ ] let user make the initial grid
+- [ ] ???
